@@ -57,7 +57,7 @@ def home_route_post():
                 "type": "section",
                 "text": {
                         "type": "plain_text",
-                        "text": incoming_request['post']['cooked'],
+                        "text": incoming_request['post']['raw'],
 
                 }
             },
