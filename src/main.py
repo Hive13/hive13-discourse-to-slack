@@ -25,6 +25,7 @@ def home_route_post():
     incoming_request = request.get_json()
     logging.debug(incoming_request)
     data = {
+        "text": "New message on Discourse!",
         "blocks": [
             {
                 "type": "header",
@@ -68,10 +69,10 @@ def home_route_post():
                         "text": {
                             "type": "plain_text",
                             "text": "Go to Topic",
-                            "emoji": true
+                            "emoji": True
                         },
                         "value": "click_me_123",
-                        "url": "https://google.com"
+                        "url": f"https://discourse.hive13.org/t/{incoming_request['post']['id']}"
                     }
                 ]
             }
