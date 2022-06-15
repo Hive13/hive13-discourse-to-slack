@@ -25,7 +25,6 @@ def home_route_post():
     incoming_request = request.get_json()
     logging.debug(incoming_request)
     data = {
-        "text": incoming_request['post']['raw'],
         "blocks": [
             {
                 "type": "header",
@@ -72,7 +71,7 @@ def home_route_post():
                             "emoji": true
                         },
                         "value": "click_me_123",
-                        "url": f"https://discourse.hive13.org/t/{incoming_requeset['post']['id']}"
+                        "url": "https://google.com"
                     }
                 ]
             }
