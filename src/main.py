@@ -56,19 +56,28 @@ def home_route_post():
             {
                 "type": "section",
                 "text": {
-                        "type": "plain_text",
+                        "type": "mrkdwn",
                         "text": incoming_request['post']['raw'],
 
                 }
             },
             {
-                "type": "button",
-                "text": {
-                    "type": "plain_text",
-                    "text": "Link Button"
-                },
-                "url": "https://api.slack.com/block-kit"
-            },
+                "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "This is a section block with a button."
+                        },
+                "accessory": {
+                            "type": "button",
+                            "text": {
+                                    "type": "plain_text",
+                                    "text": "Click Me"
+                            },
+                            "value": "click_me_123",
+                            "url": "https://google.com",
+                            "action_id": "button"
+                        }
+            }
             # {
             #     "type": "button",
             #     "text": {
