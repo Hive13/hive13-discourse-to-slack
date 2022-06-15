@@ -22,7 +22,7 @@ def home_route_post():
     incoming_request = request.get_json()
     logging.debug(incoming_request)
     data = {
-        "text": "",
+        "text": incoming_request['post']['raw'],
         "blocks": [
                 {
                     "type": "header",
@@ -57,7 +57,22 @@ def home_route_post():
                         "text": incoming_request['post']['cooked'],
 
                     }
-                }
+                },
+            {
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Go to Topic",
+						"emoji": true
+					},
+					"value": "click_me_123",
+					"url": f'https://discourse.hive13.org/t/{incoming_requeset['post']['id']}'
+				}
+			]
+		}
         ]
     }
     res = r.post(url, json=data)
