@@ -63,7 +63,7 @@ def home_route_post():
                             "type": "button",
                             "text": {
                                     "type": "plain_text",
-                                    "text": "Click Me"
+                                    "text": "Go to Topic"
                             },
                             "value": "click_me_123",
                             "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}",
