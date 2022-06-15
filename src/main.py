@@ -55,17 +55,9 @@ def home_route_post():
             },
             {
                 "type": "section",
-                "text": {
-                        "type": "mrkdwn",
-                        "text": incoming_request['post']['raw'],
-
-                }
-            },
-            {
-                "type": "section",
                         "text": {
                             "type": "mrkdwn",
-                            "text": "This is a section block with a button."
+                            "text": incoming_request['post']['raw'],
                         },
                 "accessory": {
                             "type": "button",
@@ -74,18 +66,10 @@ def home_route_post():
                                     "text": "Click Me"
                             },
                             "value": "click_me_123",
-                            "url": "https://google.com",
+                            "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}",
                             "action_id": "button"
                         }
             }
-            # {
-            #     "type": "button",
-            #     "text": {
-            #         "type": "plain_text",
-            #         "text": "Go to Topic"
-            #     },
-            #     "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
-            # }
         ]
     }
     res = r.post(url, json=data)
