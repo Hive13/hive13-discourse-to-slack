@@ -72,7 +72,7 @@ def home_route_post():
                             "emoji": True
                         },
                         "value": "click_me_123",
-                        "url": f"https://discourse.hive13.org/t/{incoming_request['post']['id']}"
+                        "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
                     }
                 ]
             }
