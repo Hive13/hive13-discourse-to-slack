@@ -50,7 +50,7 @@ def home_route_post():
                             "type": "plain_text",
                             "text": incoming_request['post']['category_slug'],
 
-                            }
+                        }
                 ]
             },
             {
@@ -62,19 +62,12 @@ def home_route_post():
                 }
             },
             {
-                "type": "actions",
-                "elements": [
-                    {
-                        "type": "button",
-                        "text": {
-                            "type": "plain_text",
-                            "text": "Go to Topic",
-                            "emoji": True
-                        },
-                        "value": "click_me_123",
-                        "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
-                    }
-                ]
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "Go to Topic"
+                },
+                "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
             }
         ]
     }
