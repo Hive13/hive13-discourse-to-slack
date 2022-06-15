@@ -4,7 +4,8 @@ import logging
 import json
 
 # set up logging
-logging.basicConfig(filename='hive13-dts.log',level=logging.DEBUG,format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
+logging.basicConfig(filename='hive13-dts.log', level=logging.DEBUG,
+                    format='%(asctime)s %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
 
 # slack url
 config = json.load(open('config.json', 'r'))
@@ -16,6 +17,8 @@ app = Flask(__name__)
 
 # see slack block kit to understand the shape of this request body:
 # https://app.slack.com/block-kit-builder/
+
+
 @app.route('/', methods=['POST'])
 def home_route_post():
     logging.debug("POST on /")
@@ -24,55 +27,55 @@ def home_route_post():
     data = {
         "text": incoming_request['post']['raw'],
         "blocks": [
-                {
-                    "type": "header",
-                    "text": {
-                            "type": "plain_text",
+            {
+                "type": "header",
+                "text": {
+                        "type": "plain_text",
                         "text": incoming_request['post']['topic_title'],
 
-                    }
-                },
+                }
+            },
             {
-                    "type": "divider"
-                },
+                "type": "divider"
+            },
             {
-                    "type": "context",
-                    "elements": [
-                            {
-                                "type": "plain_text",
-                                "text": incoming_request['post']['username'],
-
-                            },
+                "type": "context",
+                "elements": [
                         {
-                                "type": "plain_text",
-                                "text": incoming_request['post']['category_slug'],
+                            "type": "plain_text",
+                            "text": incoming_request['post']['username'],
+
+                        },
+                    {
+                            "type": "plain_text",
+                            "text": incoming_request['post']['category_slug'],
 
                             }
-                    ]
-                },
+                ]
+            },
             {
-                    "type": "section",
-                    "text": {
-                            "type": "plain_text",
+                "type": "section",
+                "text": {
+                        "type": "plain_text",
                         "text": incoming_request['post']['cooked'],
 
-                    }
-                },
+                }
+            },
             {
-			"type": "actions",
-			"elements": [
-				{
-					"type": "button",
-					"text": {
-						"type": "plain_text",
-						"text": "Go to Topic",
-						"emoji": true
-					},
-					"value": "click_me_123",
-					"url": f'https://discourse.hive13.org/t/{incoming_requeset['post']['id']}'
-				}
-			]
-		}
+                "type": "actions",
+                "elements": [
+                    {
+                        "type": "button",
+                        "text": {
+                            "type": "plain_text",
+                            "text": "Go to Topic",
+                            "emoji": true
+                        },
+                        "value": "click_me_123",
+                        "url": f"https://discourse.hive13.org/t/{incoming_requeset['post']['id']}"
+                    }
+                ]
+            }
         ]
     }
     res = r.post(url, json=data)
@@ -84,9 +87,11 @@ def home_route_post():
         logging.debug(json.dumps(incoming_request))
         return 'Success'
 
+
 @app.route('/', methods=['GET'])
 def home_route_get():
     return 'you meant to make a post request huh'
+
 
 if __name__ == '__main__':
 
