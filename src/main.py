@@ -65,10 +65,18 @@ def home_route_post():
                 "type": "button",
                 "text": {
                     "type": "plain_text",
-                    "text": "Go to Topic"
+                    "text": "Link Button"
                 },
-                "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
-            }
+                "url": "https://api.slack.com/block-kit"
+            },
+            # {
+            #     "type": "button",
+            #     "text": {
+            #         "type": "plain_text",
+            #         "text": "Go to Topic"
+            #     },
+            #     "url": f"https://discourse.hive13.org/t/{incoming_request['post']['topic_id']}"
+            # }
         ]
     }
     res = r.post(url, json=data)
