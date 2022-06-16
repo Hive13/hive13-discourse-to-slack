@@ -18,12 +18,19 @@ app = Flask(__name__)
 # see slack block kit to understand the shape of this request body:
 # https://app.slack.com/block-kit-builder/
 
+def is_leadership(category_slug):
+    if category_slug == "leadership":
+        return True
+    return False
 
 @app.route('/', methods=['POST'])
 def home_route_post():
     logging.debug("POST on /")
     incoming_request = request.get_json()
     logging.debug(incoming_request)
+    if is_leadership(incoming_request['post']['category_slug']):
+        return
+
     data = {
         "text": "New message on Discourse!",
         "blocks": [
