@@ -18,8 +18,10 @@ app = Flask(__name__)
 # see slack block kit to understand the shape of this request body:
 # https://app.slack.com/block-kit-builder/
 
-def is_leadership(category_slug):
-    if category_slug == "leadership":
+categories_to_ignore = ["leadership", "wardens"]
+
+def we_ignore_this_one(category_slug):
+    if category_slug in categories_to_ignore:
         return True
     return False
 
@@ -28,7 +30,7 @@ def home_route_post():
     logging.debug("POST on /")
     incoming_request = request.get_json()
     logging.debug(incoming_request)
-    if is_leadership(incoming_request['post']['category_slug']):
+    if we_ignore_this_one(incoming_request['post']['category_slug']):
         return
 
     data = {
