@@ -25,8 +25,14 @@ pip install -r requirements.txt
 ### Run it
 
 ```shell
-python src/main.py
+python3 src/main.py &
 ```
+
+### Helpful commands
+
+`ps aux | grep python` - find the PID of the running python script and kill it
+
+`python3 src/main.py &` - run the python script so that when you exit the program or kill the ssh stream
 
 ## Todo
 
