@@ -4,6 +4,8 @@ A simple [Flask](https://flask.palletsprojects.com/en/2.0.x/) app with a simple 
 
 [Slack App Settings Page](https://api.slack.com/apps/A035EKE2KGB) -- This is where you find the Webhook URL
 
+Currently, we are blocking the `leadership` and `wardens` categories from being sent into the #discourse-feed in Slack. 
+
 ## To Run
 
 ### Clone The Repo
